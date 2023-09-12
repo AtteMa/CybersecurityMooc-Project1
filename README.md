@@ -2,9 +2,13 @@
 
 This is the course project 1 containing a csrf flaw and four flaws from the [OWASP top ten 2021](https://owasp.org/www-project-top-ten/)
 
-You can test the demo project by downloading and extracting the files and running the command
+You can test the demo project by downloading and extracting the files and running the following commands:
 
-``python manage.py runserver``
+```  pyhton manage.py makemigrations
+
+  python manage.py migrate
+
+  python manage.py runserver```
 
 Links to the flaws in the code:
 
