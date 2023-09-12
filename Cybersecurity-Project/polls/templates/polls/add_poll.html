@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+{% block content %}
+<div class="mainbox">
+    <h2>Create new poll:</h2>
+
+    <form action="{% url 'polls:add_poll' %}" method="post">
+    <!--{% csrf_token %}-->
+    {{form}}
+    <h5>Add Product Metas</h5>
+        {{ product_meta_formset.non_form_errors }}
+        {{ product_meta_formset.management_form }}
+        {% for form in product_meta_formset %}
+        <div class="labelText">
+            <div class="labelText">{{form.choice_text.label}}: {{ form.choice_text }}</div>
+        </div>
+        {% endfor %}
+    <input type="submit" value="Add poll">
+    </form>
+</div>
+{% endblock %}
