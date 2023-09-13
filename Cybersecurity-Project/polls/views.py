@@ -7,6 +7,14 @@ from .models import Choice, Question
 from . import forms
 
 
+# Here we can add a logger to track for example voting and the addition of polls. This will make
+# locating possible bugs or malicious activity much easier.
+
+# import logger
+# logger = logging.getLogger('pollsLogger')
+# logger.debug("logged text goes here")
+
+
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
