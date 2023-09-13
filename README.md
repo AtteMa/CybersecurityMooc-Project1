@@ -44,3 +44,8 @@ Insecure design refers to the creation of software systems, applications, or pro
 
 The lack of unit or integration testing is inherently insecure design. The flaw in my project is the complete lack any testing. This can be fixed creating a wide range of automated tests with the tools django provides. One should also build the application from the ground up using TDD, Test Driven Development. In the code there are commented-out automated tests to test the core functionalities of the application. We can also add logging so it will be easier to track and identify possible vulnerabilities or defects.
 
+# Flaw 4: Vulnerable and Outdated Components
+
+Links to the flaws:
+
+Vulnerable and outdated components is a flaw where the software is built using pre-existing components, for example older versions of libraries and dependancies that have known vulnerabilites, thereby exposing the application to these vulnerabilities as well. To counter this flaw, the developer must regularly audit the versions of any frameworks or components their application uses. In this application we are using django, which luckily notifys us automatically when there is a new version available. Django also has automatic warnings for outdated dependencies.
