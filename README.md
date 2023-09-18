@@ -38,11 +38,11 @@ In the code, the injection is already fixed with djangos "models" framework. Mod
 
 Links to the flaws:
 - https://github.com/AtteMa/CybersecurityMooc-Project1/blob/f9a9d4b8bb6d798cdda07168d2939e2b2fd3a133/Cybersecurity-Project/polls/tests.py#L1
-- https://github.com/AtteMa/CybersecurityMooc-Project1/blob/3545c791edea7598c37f428e58db90c443ae6d4e/Cybersecurity-Project/polls/views.py#L10
+- https://github.com/AtteMa/CybersecurityMooc-Project1/blob/4a0a924277b3551df986b7c712c390db149cece6/Cybersecurity-Project/polls/views.py#L62
 
 Insecure design refers to the creation of software systems, applications, or products that inherently lack the necessary security measures to protect against potential threats and vulnerabilities. It is different from insecure implementation, in which one can have flaws in the software implementation despite having a secure design. Insecure implementation can always be fixed with the tools that well thought out secure design provides, but insecure design cannot be fixed by even a perfect implementation as by definition, needed security controls were never created in the first place.
 
-The lack of unit or integration testing is inherently insecure design. The flaw in my project is the complete lack any testing. This can be fixed creating a wide range of automated tests with the tools django provides. One should also build the application from the ground up using TDD, Test Driven Development. In the code there are commented-out automated tests to test the core functionalities of the application. We can also add logging so it will be easier to track and identify possible vulnerabilities or defects.
+The lack of unit or integration testing is inherently insecure design. The flaws in my project are the complete lack any testing and bad design where user can vote more than once on a single question. This can be fixed creating a wide range of automated tests with the tools django provides. One should also build the application from the ground up using TDD, Test Driven Development. In the code there are commented-out automated tests to test the core functionalities of the application. The voting issue can be fixed with a session check so that one user can vote only once.
 
 # Flaw 4: Vulnerable and Outdated Components
 
