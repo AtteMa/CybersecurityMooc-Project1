@@ -47,5 +47,8 @@ The lack of unit or integration testing is inherently insecure design. The flaw 
 # Flaw 4: Vulnerable and Outdated Components
 
 Links to the flaws:
+- https://github.com/AtteMa/CybersecurityMooc-Project1/blob/f75cc109fd0bc7e4c261aa055341667548cfb840/Cybersecurity-Project/project1/settings.py#L5
 
 Vulnerable and outdated components is a flaw where the software is built using pre-existing components, for example older versions of libraries and dependancies that have known vulnerabilites, thereby exposing the application to these vulnerabilities as well. To counter this flaw, the developer must regularly audit the versions of any frameworks or components their application uses. In this application we are using django, which luckily notifys us automatically when there is a new version available. Django also has automatic warnings for outdated dependencies.
+
+The project is built using a secure and updated version of django, but we could make it vulnerable by using an older version of django that has known vulnerabilities. For example, django version 4.2.1 has known denial of service vulnerabilities in some of its classes and functions. There are instructions on how to install the outdated version in the code. If we built our project using the outdated django version, we could fix it by checking the latest version and updating our framework.
