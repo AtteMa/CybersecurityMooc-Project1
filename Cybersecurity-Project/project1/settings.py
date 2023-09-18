@@ -7,6 +7,7 @@ Django 4.2.1 has a known DoS vulnerability in the django.utils.encoding.uri_to_i
 To make our application vulnerable, we need to uninstall our current django version and then
 install a vulnerable version of django by running the 'python -m pip install django==4.2.1'.
 Then we start our project byt 'django-admin startproject' with the vulnerable version.
+Source: https://security.snyk.io/package/pip/django/4.2.1
 
 For more information on this file, see
 https://docs.djangoproject.com/en/4.2/topics/settings/
