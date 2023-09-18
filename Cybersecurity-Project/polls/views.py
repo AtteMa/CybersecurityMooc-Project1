@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from django.contrib import messages
 from .models import Choice, Question
 from . import forms
 
@@ -57,6 +58,14 @@ class ResultsView(generic.DetailView):
         #   cursor.execute(cmd, data)
         #   conn.commit()
 
+        
+        # Here we could add a session check to see if a user has already voted on a question
+        '''
+        if f'voted_{question_id}' in request.session:
+            messages.error(request, "You have already voted for this question.")
+            return HttpResponseRedirect(reverse('polls:results', args=(question_id,)))
+        '''
+
         question = get_object_or_404(Question, pk=question_id)
         try:
             selected_choice = question.choice_set.get(pk=request.POST['choice'])
@@ -68,6 +77,10 @@ class ResultsView(generic.DetailView):
         else:
             selected_choice.votes += 1
             selected_choice.save()
+
+            #here we set the question as "voted"
+            '''request.session[f'voted_{question_id}'] = True'''
+
             return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
     def add_poll(request):
