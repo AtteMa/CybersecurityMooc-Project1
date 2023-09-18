@@ -12,8 +12,8 @@ from . import forms
 # locating possible bugs or malicious activity much easier.
 
 # import logger
-# logger = logging.getLogger('pollsLogger')
-# logger.debug("logged text goes here")
+# logger = logging.getLogger('pollsAppLogger')
+# logger.debug("Hello, this is a logged text")
 
 
 class IndexView(generic.ListView):

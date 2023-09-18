@@ -128,3 +128,29 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# We have no logging whatsoever in our application at the moment
+# To add console logging, we need to implement the followin code, and add the appropriate handling
+# for the pollsAppLogger to our views.py.
+"""
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+       'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+       'handlers': ['console'],
+       'level': 'WARNING',
+    },
+    'loggers': {
+        'pollsAppLogger': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            'propagate': False,
+        },
+    },
+}
+"""
