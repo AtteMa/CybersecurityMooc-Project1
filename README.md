@@ -52,3 +52,13 @@ Links to the flaws:
 Vulnerable and outdated components is a flaw where the software is built using pre-existing components, for example older versions of libraries and dependancies that have known vulnerabilites, thereby exposing the application to these vulnerabilities as well. To counter this flaw, the developer must regularly audit the versions of any frameworks or components their application uses. In this application we are using django, which luckily notifys us automatically when there is a new version available. Django also has automatic warnings for outdated dependencies.
 
 The project is built using a secure and updated version of django, but we could make it vulnerable by using an older version of django that has known vulnerabilities. For example, django version 4.2.1 has known denial of service vulnerabilities in some of its classes and functions. There are instructions on how to install the outdated version in the code. If we built our project using the outdated django version, we could fix it by checking the latest version and updating our framework.
+
+# Flaw 5: Security logging and monitoring failures
+
+Links to the flaws:
+- https://github.com/AtteMa/CybersecurityMooc-Project1/blob/34485e6c376b5d832249b4eaea419645fb22ba9d/Cybersecurity-Project/polls/views.py#L11
+- https://github.com/AtteMa/CybersecurityMooc-Project1/blob/34485e6c376b5d832249b4eaea419645fb22ba9d/Cybersecurity-Project/project1/settings.py#L132
+
+Application logs are a primary source of information for monitoring and detecting security incidents. By analyzing log data, the developer can identify suspicious activities and/or potential breaches. In the event of a security breach, logs provide a record of system activities. This information is essential in responding to the breach, as it helps to understand where and how the incident occured. Logging application alerts and warnings can help developers to respond to malicious activity nearly instantly.
+
+In my application there is no logging present whatsoever. To fix this issue we need to implement a logger to log essential functions of our application, for example voting and adding a poll. This could help to identify activity that could possibly be malicious, like a single user voting multiple times in a single poll.
