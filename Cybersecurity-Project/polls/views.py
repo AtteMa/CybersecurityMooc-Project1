@@ -60,11 +60,11 @@ class ResultsView(generic.DetailView):
 
         
         # Here we could add a session check to see if a user has already voted on a question
-        '''
+        """
         if f'voted_{question_id}' in request.session:
             messages.error(request, "You have already voted for this question.")
             return HttpResponseRedirect(reverse('polls:results', args=(question_id,)))
-        '''
+        """
 
         question = get_object_or_404(Question, pk=question_id)
         try:
@@ -79,7 +79,7 @@ class ResultsView(generic.DetailView):
             selected_choice.save()
 
             #here we set the question as "voted"
-            '''request.session[f'voted_{question_id}'] = True'''
+            """request.session[f'voted_{question_id}'] = True"""
 
             return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
