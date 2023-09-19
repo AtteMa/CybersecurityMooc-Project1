@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
-from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
 from .models import Choice, Question
 from . import forms
 
@@ -15,7 +15,7 @@ from . import forms
 # logger = logging.getLogger('pollsAppLogger')
 # logger.debug("Hello, this is a logged text")
 
-
+@csrf_exempt
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
@@ -29,17 +29,18 @@ class IndexView(generic.ListView):
             pub_date__lte=timezone.now()
         ).order_by('-pub_date')[:5]
 
-
+@csrf_exempt
 class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
+    
     def get_queryset(self):
         """
         Excludes any questions that aren't published yet.
         """
         return Question.objects.filter(pub_date__lte=timezone.now())
 
-
+@csrf_exempt
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
@@ -51,11 +52,11 @@ class ResultsView(generic.DetailView):
         
         # One could execute the database queries directly. Here is an example of a direct database
         # connection with an injection:
-
+        
+        #   choice = request.POST['choice']
+        #   question_id = request.POST['question_id']
         #   cursor = conn.cursor()
-        #   cmd = """ UPDATE Choise SET (vote) WHERE id=(id) VALUES (?,?); """
-        #   data = (selected_choise.votes, id)
-        #   cursor.execute(cmd, data)
+        #   cursor.execute("UPDATE Choise SET (vote) WHERE id LIKE '%%%s%%' VALUES ('"+ choice +"', '"+ question_id +"');")
         #   conn.commit()
 
         
@@ -91,10 +92,10 @@ class ResultsView(generic.DetailView):
         # One could execute the database queries directly. Here is an example of a direct database
         # connection with an injection:
 
+        #   question_text = request.POST['question_text']
+        #   pub_date = request.POST['pub_date']
         #   cursor = conn.cursor()
-        #   cmd = """ INSERT INTO Question (question_text, pub_date) VALUES (?,?); """
-        #   data = (question_text, pub_date)
-        #   cursor.execute(cmd, data)
+        #   cmd = cursor.execute("INSERT INTO Question (question_text, pub_date) VALUES ('"+ question_text +"','"+ pub_date +"');")
         #   conn.commit()
 
         if request.method == 'POST':
