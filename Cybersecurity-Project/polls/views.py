@@ -15,6 +15,7 @@ from . import forms
 # logger = logging.getLogger('pollsAppLogger')
 # logger.debug("Hello, this is a logged text")
 
+#here we need to replace @csrf_exempt from all views with @csrf_protect
 @csrf_exempt
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
